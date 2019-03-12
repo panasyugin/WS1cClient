@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="373.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ws1c.gui.controler.Controler">
+   <children>
+      <ScrollPane layoutY="22.0" prefHeight="351.0" prefWidth="600.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="361.0" prefWidth="600.0">
+                    <columns>
+                      <TableColumn id="companyID" fx:id="companyID" prefWidth="75.0" text="Company ID" />
+                      <TableColumn id="companyName" fx:id="companyName" prefWidth="120.0" text="Company Name" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <MenuBar layoutY="-1.0" prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="buttonClose" mnemonicParsing="false" onAction="#buttonCloseOnAction" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Get data">
+            <items>
+              <MenuItem fx:id="buttonGetDataForDashBoard" mnemonicParsing="false" onAction="#buttonGetDataForDashBoardOnAction" text="Get data for dash board" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
