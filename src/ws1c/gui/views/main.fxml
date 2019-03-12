@@ -6,35 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="373.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ws1c.gui.controler.Controler">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="373.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ws1c.gui.controler.Controler">
    <children>
-      <ScrollPane layoutY="22.0" prefHeight="351.0" prefWidth="600.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <TableView fx:id="tableView" prefHeight="361.0" prefWidth="600.0">
-                    <columns>
-                      <TableColumn id="companyID" fx:id="companyID" prefWidth="75.0" text="Company ID" />
-                      <TableColumn id="companyName" fx:id="companyName" prefWidth="120.0" text="Company Name" />
-                        <TableColumn id="companyName" fx:id="companyType" prefWidth="120.0" text="Company Type" />
-                        <TableColumn id="companyName" fx:id="segment" prefWidth="120.0" text="Segment" />
-                        <TableColumn id="companyName" fx:id="territoriality" prefWidth="120.0" text="Territoriality" />
-                        <TableColumn id="companyName" fx:id="creditorID" prefWidth="120.0" text="Creditor ID" />
-                        <TableColumn id="companyName" fx:id="creditor" prefWidth="120.0" text="creditor" />
-                        <TableColumn id="companyName" fx:id="creditSecurity" prefWidth="120.0" text="Credit Security" />
-                        <TableColumn id="companyName" fx:id="loanPeriod" prefWidth="120.0" text="Loan Period" />
-                        <TableColumn id="companyName" fx:id="loanForm" prefWidth="120.0" text="Loan Form" />
-                        <TableColumn id="companyName" fx:id="currency" prefWidth="120.0" text="Сurrency" />
-                        <TableColumn id="companyName" fx:id="limit" prefWidth="120.0" text="Limit" />
-                        <TableColumn id="companyName" fx:id="balanceDate" prefWidth="120.0" text="Balance Date" />
-                        <TableColumn id="companyName" fx:id="remainingDebt" prefWidth="120.0" text="Remaining Debt" />
-                    </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-      <MenuBar layoutY="-1.0" prefHeight="25.0" prefWidth="600.0">
+      <MenuBar prefHeight="373.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -53,5 +27,23 @@
           </Menu>
         </menus>
       </MenuBar>
+      <TableView fx:id="tableView" layoutY="24.0" maxHeight="1.7976931348623157E308" prefHeight="349.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+        <columns>
+          <TableColumn id="companyID" fx:id="companyID" prefWidth="75.0" text="Company ID" />
+          <TableColumn id="companyName" fx:id="companyName" prefWidth="120.0" text="Company Name" />
+            <TableColumn id="companyName" fx:id="companyType" prefWidth="120.0" text="Company Type" />
+            <TableColumn id="companyName" fx:id="segment" prefWidth="120.0" text="Segment" />
+            <TableColumn id="companyName" fx:id="territoriality" prefWidth="120.0" text="Territoriality" />
+            <TableColumn id="companyName" fx:id="creditorID" prefWidth="120.0" text="Creditor ID" />
+            <TableColumn id="companyName" fx:id="creditor" prefWidth="120.0" text="creditor" />
+            <TableColumn id="companyName" fx:id="creditSecurity" prefWidth="120.0" text="Credit Security" />
+            <TableColumn id="companyName" fx:id="loanPeriod" prefWidth="120.0" text="Loan Period" />
+            <TableColumn id="companyName" fx:id="loanForm" prefWidth="120.0" text="Loan Form" />
+            <TableColumn id="companyName" fx:id="currency" prefWidth="120.0" text="Сurrency" />
+            <TableColumn id="companyName" fx:id="limit" prefWidth="120.0" text="Limit" />
+            <TableColumn id="companyName" fx:id="balanceDate" prefWidth="120.0" text="Balance Date" />
+            <TableColumn id="companyName" fx:id="remainingDebt" prefWidth="120.0" text="Remaining Debt" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

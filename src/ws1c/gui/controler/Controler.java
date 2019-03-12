@@ -6,16 +6,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import javafx.util.converter.DoubleStringConverter;
 import ws1c.client.DataCreditsLoans;
 import ws1c.client.GetDataForDashBoard;
 import ws1c.client.GetDataForDashBoardPortType;
@@ -28,12 +28,15 @@ import javax.xml.ws.WebServiceException;
 import java.io.IOException;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
+import java.net.URL;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class Controler {
+public class Controler implements Initializable {
 
     private Auth authControler;
 
@@ -148,10 +151,6 @@ public class Controler {
 
         ObservableList observableList = FXCollections.observableList(loanData.getDataCreditsLoans());
 
-        companyID.setCellValueFactory(new PropertyValueFactory<>("companyID"));
-        companyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
-        companyType.setCellValueFactory(new PropertyValueFactory<>("companyType"));
-
         tableView.setItems(observableList);
     }
 
@@ -163,4 +162,50 @@ public class Controler {
         return authControler;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        companyID.setCellValueFactory(new PropertyValueFactory<>("companyID"));
+        companyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+        companyType.setCellValueFactory(new PropertyValueFactory<>("companyType"));
+        segment.setCellValueFactory(new PropertyValueFactory<>("segment"));
+        territoriality.setCellValueFactory(new PropertyValueFactory<>("territoriality"));
+        creditorID.setCellValueFactory(new PropertyValueFactory<>("creditorID"));
+        creditor.setCellValueFactory(new PropertyValueFactory<>("creditor"));
+        creditSecurity.setCellValueFactory(new PropertyValueFactory<>("creditSecurity"));
+        loanPeriod.setCellValueFactory(new PropertyValueFactory<>("loanPeriod"));
+        loanForm.setCellValueFactory(new PropertyValueFactory<>("loanForm"));
+        currency.setCellValueFactory(new PropertyValueFactory<>("currency"));
+        balanceDate.setCellValueFactory(new PropertyValueFactory<>("balanceDate"));
+
+        NumberFormat currencyFormat = NumberFormat.getInstance();
+
+        limit.setCellValueFactory(new PropertyValueFactory<>("limit"));
+        limit.setCellFactory(tc -> new TableCell<DataCreditsLoans, Double>() {
+
+            @Override
+            protected void updateItem(Double price, boolean empty) {
+                super.updateItem(price, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(currencyFormat.format(price));
+                }
+            }
+        });
+
+        remainingDebt.setCellValueFactory(new PropertyValueFactory<>("remainingDebt"));
+        remainingDebt.setCellFactory(tc -> new TableCell<DataCreditsLoans, Double>() {
+
+            @Override
+            protected void updateItem(Double price, boolean empty) {
+                super.updateItem(price, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(currencyFormat.format(price));
+                }
+            }
+        });
+    }
 }
