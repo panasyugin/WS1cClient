@@ -48,9 +48,32 @@ public class Controler {
 
     @FXML
     private TableColumn<DataCreditsLoans, String> companyID;
-
     @FXML
     private TableColumn<DataCreditsLoans, String> companyName;
+    @FXML
+    private TableColumn<DataCreditsLoans, String> companyType;
+    @FXML
+    private TableColumn<DataCreditsLoans, String> segment;
+    @FXML
+    private TableColumn<DataCreditsLoans, String> territoriality;
+    @FXML
+    private TableColumn<DataCreditsLoans, String> creditorID;
+    @FXML
+    private TableColumn<DataCreditsLoans, String> creditor;
+    @FXML
+    private TableColumn<DataCreditsLoans, String> creditSecurity;
+    @FXML
+    private TableColumn<DataCreditsLoans, XMLGregorianCalendar> loanPeriod;
+    @FXML
+    private TableColumn<DataCreditsLoans, String> loanForm;
+    @FXML
+    private TableColumn<DataCreditsLoans, String> currency;
+    @FXML
+    private TableColumn<DataCreditsLoans, Double> limit;
+    @FXML
+    private TableColumn<DataCreditsLoans, XMLGregorianCalendar> balanceDate;
+    @FXML
+    private TableColumn<DataCreditsLoans, Double> remainingDebt;
 
     @FXML
     void buttonCloseOnAction(ActionEvent event) {
@@ -125,10 +148,9 @@ public class Controler {
 
         ObservableList observableList = FXCollections.observableList(loanData.getDataCreditsLoans());
 
-        TableColumn<DataCreditsLoans, String> companyTypeCol = new TableColumn<DataCreditsLoans, String>("Company type");
-
-        companyTypeCol.setCellValueFactory(new PropertyValueFactory<>("companyType"));
-        tableView.getColumns().add(companyTypeCol);
+        companyID.setCellValueFactory(new PropertyValueFactory<>("companyID"));
+        companyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+        companyType.setCellValueFactory(new PropertyValueFactory<>("companyType"));
 
         tableView.setItems(observableList);
     }
