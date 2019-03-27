@@ -49,7 +49,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "segment",
     "territoriality",
     "creditorID",
-    "creditor",
+    "creditorName",
     "creditSecurity",
     "loanPeriod",
     "loanForm",
@@ -73,7 +73,7 @@ public class DataCreditsLoans {
     @XmlElement(required = true)
     protected String creditorID;
     @XmlElement(required = true)
-    protected String creditor;
+    protected String creditorName;
     @XmlElement(required = true)
     protected String creditSecurity;
     @XmlElement(required = true)
@@ -241,8 +241,8 @@ public class DataCreditsLoans {
      *     {@link String }
      *     
      */
-    public String getCreditor() {
-        return creditor;
+    public String getCreditorName() {
+        return creditorName;
     }
 
     /**
@@ -253,8 +253,8 @@ public class DataCreditsLoans {
      *     {@link String }
      *     
      */
-    public void setCreditor(String value) {
-        this.creditor = value;
+    public void setCreditorName(String value) {
+        this.creditorName = value;
     }
 
     /**

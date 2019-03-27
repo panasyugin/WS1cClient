@@ -33,7 +33,6 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controler implements Initializable {
@@ -62,7 +61,7 @@ public class Controler implements Initializable {
     @FXML
     private TableColumn<DataCreditsLoans, String> creditorID;
     @FXML
-    private TableColumn<DataCreditsLoans, String> creditor;
+    private TableColumn<DataCreditsLoans, String> creditorName;
     @FXML
     private TableColumn<DataCreditsLoans, String> creditSecurity;
     @FXML
@@ -171,7 +170,7 @@ public class Controler implements Initializable {
         segment.setCellValueFactory(new PropertyValueFactory<>("segment"));
         territoriality.setCellValueFactory(new PropertyValueFactory<>("territoriality"));
         creditorID.setCellValueFactory(new PropertyValueFactory<>("creditorID"));
-        creditor.setCellValueFactory(new PropertyValueFactory<>("creditor"));
+        creditorName.setCellValueFactory(new PropertyValueFactory<>("creditorName"));
         creditSecurity.setCellValueFactory(new PropertyValueFactory<>("creditSecurity"));
         loanPeriod.setCellValueFactory(new PropertyValueFactory<>("loanPeriod"));
         loanForm.setCellValueFactory(new PropertyValueFactory<>("loanForm"));

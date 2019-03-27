@@ -31,18 +31,18 @@
         <columns>
           <TableColumn id="companyID" fx:id="companyID" prefWidth="75.0" text="Company ID" />
           <TableColumn id="companyName" fx:id="companyName" prefWidth="120.0" text="Company Name" />
-            <TableColumn id="companyName" fx:id="companyType" prefWidth="120.0" text="Company Type" />
-            <TableColumn id="companyName" fx:id="segment" prefWidth="120.0" text="Segment" />
-            <TableColumn id="companyName" fx:id="territoriality" prefWidth="120.0" text="Territoriality" />
-            <TableColumn id="companyName" fx:id="creditorID" prefWidth="120.0" text="Creditor ID" />
-            <TableColumn id="companyName" fx:id="creditor" prefWidth="120.0" text="creditor" />
-            <TableColumn id="companyName" fx:id="creditSecurity" prefWidth="120.0" text="Credit Security" />
-            <TableColumn id="companyName" fx:id="loanPeriod" prefWidth="120.0" text="Loan Period" />
-            <TableColumn id="companyName" fx:id="loanForm" prefWidth="120.0" text="Loan Form" />
-            <TableColumn id="companyName" fx:id="currency" prefWidth="120.0" text="Сurrency" />
-            <TableColumn id="companyName" fx:id="limit" prefWidth="120.0" text="Limit" />
-            <TableColumn id="companyName" fx:id="balanceDate" prefWidth="120.0" text="Balance Date" />
-            <TableColumn id="companyName" fx:id="remainingDebt" prefWidth="120.0" text="Remaining Debt" />
+            <TableColumn id="companyType" fx:id="companyType" prefWidth="120.0" text="Company Type" />
+            <TableColumn id="segment" fx:id="segment" prefWidth="120.0" text="Segment" />
+            <TableColumn id="territoriality" fx:id="territoriality" prefWidth="120.0" text="Territoriality" />
+            <TableColumn id="creditorID" fx:id="creditorID" prefWidth="120.0" text="Creditor ID" />
+            <TableColumn id="creditorName" fx:id="creditorName" prefWidth="120.0" text="Creditor Name" />
+            <TableColumn id="creditSecurity" fx:id="creditSecurity" prefWidth="120.0" text="Credit Security" />
+            <TableColumn id="loanPeriod" fx:id="loanPeriod" prefWidth="120.0" text="Loan Period" />
+            <TableColumn id="loanForm" fx:id="loanForm" prefWidth="120.0" text="Loan Form" />
+            <TableColumn id="currency" fx:id="currency" prefWidth="120.0" text="Сurrency" />
+            <TableColumn id="limit" fx:id="limit" prefWidth="120.0" text="Limit" />
+            <TableColumn id="balanceDate" fx:id="balanceDate" prefWidth="120.0" text="Balance Date" />
+            <TableColumn id="remainingDebt" fx:id="remainingDebt" prefWidth="120.0" text="Remaining Debt" />
         </columns>
       </TableView>
    </children>
