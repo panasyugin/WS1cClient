@@ -1,4 +1,18 @@
-.idea\
-lib\
-out\
-WS1cClient.iml
+#############
+## Idea
+#############
+target/
+.idea/
+.idea
+.repository/
+*.iml
+*.iws
+*.class
+*.info
+*.properties
+*.jar
+
+/out/
+/out.log
+/out.log.*
+
