@@ -56,7 +56,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "currency",
     "limit",
     "balanceDate",
-    "remainingDebt"
+    "remainingDebt",
+    "remainingDebtInCurrency"
 })
 public class DataCreditsLoans {
 
@@ -88,6 +89,7 @@ public class DataCreditsLoans {
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar balanceDate;
     protected double remainingDebt;
+    protected double remainingDebtInCurrency;
 
     /**
      * Gets the value of the companyID property.
@@ -409,4 +411,19 @@ public class DataCreditsLoans {
         this.remainingDebt = value;
     }
 
+    /**
+     * Gets the value of the remainingDebtInCurrency property.
+     *
+     */
+    public double getRemainingDebtInCurrency() {
+        return remainingDebtInCurrency;
+    }
+
+    /**
+     * Sets the value of the remainingDebt property.
+     *
+     */
+    public void setRemainingDebtInCurrency(double value) {
+        this.remainingDebtInCurrency = value;
+    }
 }

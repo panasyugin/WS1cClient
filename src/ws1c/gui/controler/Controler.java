@@ -76,6 +76,8 @@ public class Controler implements Initializable {
     private TableColumn<DataCreditsLoans, XMLGregorianCalendar> balanceDate;
     @FXML
     private TableColumn<DataCreditsLoans, Double> remainingDebt;
+    @FXML
+    private TableColumn<DataCreditsLoans, Double> remainingDebtInCurrency;
 
     @FXML
     void buttonCloseOnAction(ActionEvent event) {
@@ -195,6 +197,20 @@ public class Controler implements Initializable {
 
         remainingDebt.setCellValueFactory(new PropertyValueFactory<>("remainingDebt"));
         remainingDebt.setCellFactory(tc -> new TableCell<DataCreditsLoans, Double>() {
+
+            @Override
+            protected void updateItem(Double price, boolean empty) {
+                super.updateItem(price, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(currencyFormat.format(price));
+                }
+            }
+        });
+
+        remainingDebtInCurrency.setCellValueFactory(new PropertyValueFactory<>("remainingDebtInCurrency"));
+        remainingDebtInCurrency.setCellFactory(tc -> new TableCell<DataCreditsLoans, Double>() {
 
             @Override
             protected void updateItem(Double price, boolean empty) {
