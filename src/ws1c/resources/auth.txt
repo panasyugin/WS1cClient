@@ -1,0 +1,1 @@
+http://GetDataForDashBoard:<***>@msk1-t1capp09/is10235_ct_korp_kazna_upfi/ws/GetDataForDashBoard?wsdl

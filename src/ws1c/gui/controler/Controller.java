@@ -28,7 +28,7 @@ import java.time.ZoneId;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
-public class Controler implements Initializable {
+public class Controller implements Initializable {
 
     private Auth authController;
 
@@ -92,9 +92,10 @@ public class Controler implements Initializable {
     @FXML
     void buttonGetDataForDashBoardOnAction(ActionEvent event) throws IOException, DatatypeConfigurationException {
 
-        LocalDate date = LocalDate.now();
+        AuthResult authResult = authAndGetProxy();
 
-        GetDataForDashBoardPortType portType = authAndGetProxy(date);
+        GetDataForDashBoardPortType portType = authResult.portType;
+        LocalDate date = authResult.date;
 
         // Выполняем вызов web-сервиса
         GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
@@ -110,9 +111,10 @@ public class Controler implements Initializable {
     @FXML
     void buttonGetMaxDebtOnAction(ActionEvent event) throws IOException, DatatypeConfigurationException {
 
-        LocalDate date = LocalDate.now();
+        AuthResult authResult = authAndGetProxy();
 
-        GetDataForDashBoardPortType portType = authAndGetProxy(date);
+        GetDataForDashBoardPortType portType = authResult.portType;
+        LocalDate date = authResult.date;
 
         // Выполняем вызов web-сервиса
         GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
@@ -129,7 +131,7 @@ public class Controler implements Initializable {
         authController = c;
     }
 
-    GetDataForDashBoardPortType authAndGetProxy(LocalDate date) throws IOException {
+    AuthResult authAndGetProxy() throws IOException {
 
         GetDataForDashBoardPortType portType = null;
 
@@ -154,10 +156,10 @@ public class Controler implements Initializable {
 
         String login = authC.getLogin();
         String pass = authC.getPassword();
-        date = authC.getDate();
+        LocalDate date = authC.getDate();
 
         if (authC.isTerminated())
-            return portType;
+            return new AuthResult(portType, date);
 
         // Получаем порт для вызова операции web-сервиса
         Authenticator myAuth = new Authenticator() {
@@ -176,12 +178,12 @@ public class Controler implements Initializable {
         }
         catch (WebServiceException e){
             System.out.println(e.getMessage());
-            return portType;
+            return new AuthResult(portType, date);
         }
 
         portType = proxy.getGetDataForDashBoardSoap();
 
-        return portType;
+        return new AuthResult(portType, date);
     }
 
     Auth getAuthController(){
@@ -247,5 +249,17 @@ public class Controler implements Initializable {
                 }
             }
         });
+    }
+
+    private class AuthResult {
+
+        private LocalDate date;
+
+        private GetDataForDashBoardPortType portType;
+
+        public AuthResult(GetDataForDashBoardPortType portType, LocalDate date) {
+            this.portType = portType;
+            this.date = date;
+        }
     }
 }
