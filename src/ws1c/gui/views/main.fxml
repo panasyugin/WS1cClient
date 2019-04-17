@@ -18,6 +18,7 @@
           <Menu mnemonicParsing="false" text="Get data">
             <items>
               <MenuItem fx:id="buttonGetDataForDashBoard" mnemonicParsing="false" onAction="#buttonGetDataForDashBoardOnAction" text="Get data for dash board" />
+              <MenuItem fx:id="buttonGetMaxDebt" mnemonicParsing="false" onAction="#buttonGetMaxDebtOnAction" text="Get max debt" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

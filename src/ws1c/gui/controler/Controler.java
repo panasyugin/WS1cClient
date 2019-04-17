@@ -1,4 +1,5 @@
 package ws1c.gui.controler;
+import ws1c.client.*;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -11,15 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import javafx.scene.Node;
-import javafx.stage.Stage;
-import javafx.util.converter.DoubleStringConverter;
-import ws1c.client.DataCreditsLoans;
-import ws1c.client.GetDataForDashBoard;
-import ws1c.client.GetDataForDashBoardPortType;
-import ws1c.client.TableCreditsLoans;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
@@ -37,13 +30,16 @@ import java.util.ResourceBundle;
 
 public class Controler implements Initializable {
 
-    private Auth authControler;
+    private Auth authController;
 
     @FXML
     public MenuItem buttonClose;
 
     @FXML
     public MenuItem buttonGetDataForDashBoard;
+
+    @FXML
+    public MenuItem buttonGetMaxDebt;
 
     @FXML
     private TableView<DataCreditsLoans> tableView;
@@ -96,6 +92,47 @@ public class Controler implements Initializable {
     @FXML
     void buttonGetDataForDashBoardOnAction(ActionEvent event) throws IOException, DatatypeConfigurationException {
 
+        LocalDate date = LocalDate.now();
+
+        GetDataForDashBoardPortType portType = authAndGetProxy(date);
+
+        // Выполняем вызов web-сервиса
+        GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
+        XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+
+        TableCreditsLoans loanData = portType.getLoanData(xmlDate);
+
+        ObservableList observableList = FXCollections.observableList(loanData.getDataCreditsLoans());
+
+        tableView.setItems(observableList);
+    }
+
+    @FXML
+    void buttonGetMaxDebtOnAction(ActionEvent event) throws IOException, DatatypeConfigurationException {
+
+        LocalDate date = LocalDate.now();
+
+        GetDataForDashBoardPortType portType = authAndGetProxy(date);
+
+        // Выполняем вызов web-сервиса
+        GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
+        XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+
+        TableCreditsLoans loanData = portType.getMaxDebt(xmlDate);
+
+        ObservableList observableList = FXCollections.observableList(loanData.getDataCreditsLoans());
+
+        tableView.setItems(observableList);
+    }
+
+    void setAuthControler(Auth c){
+        authController = c;
+    }
+
+    GetDataForDashBoardPortType authAndGetProxy(LocalDate date) throws IOException {
+
+        GetDataForDashBoardPortType portType = null;
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ws1c/gui/views/auth.fxml"));
 
         Parent root = loader.load();
@@ -117,10 +154,10 @@ public class Controler implements Initializable {
 
         String login = authC.getLogin();
         String pass = authC.getPassword();
-        LocalDate date = authC.getDate();
+        date = authC.getDate();
 
         if (authC.isTerminated())
-            return;
+            return portType;
 
         // Получаем порт для вызова операции web-сервиса
         Authenticator myAuth = new Authenticator() {
@@ -139,28 +176,16 @@ public class Controler implements Initializable {
         }
         catch (WebServiceException e){
             System.out.println(e.getMessage());
-            return;
+            return portType;
         }
 
-        GetDataForDashBoardPortType portType = proxy.getGetDataForDashBoardSoap();
+        portType = proxy.getGetDataForDashBoardSoap();
 
-        // Выполняем вызов web-сервиса
-        GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
-        XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
-
-        TableCreditsLoans loanData = portType.getLoanData(xmlDate);
-
-        ObservableList observableList = FXCollections.observableList(loanData.getDataCreditsLoans());
-
-        tableView.setItems(observableList);
+        return portType;
     }
 
-    void setAuthControler(Auth c){
-        authControler = c;
-    }
-
-    Auth getAuthControler(){
-        return authControler;
+    Auth getAuthController(){
+        return authController;
     }
 
     @Override
