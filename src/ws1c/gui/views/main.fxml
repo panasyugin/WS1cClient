@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -19,6 +16,7 @@
             <items>
               <MenuItem fx:id="buttonGetDataForDashBoard" mnemonicParsing="false" onAction="#buttonGetDataForDashBoardOnAction" text="Get data for dash board" />
               <MenuItem fx:id="buttonGetMaxDebt" mnemonicParsing="false" onAction="#buttonGetMaxDebtOnAction" text="Get max debt" />
+              <MenuItem fx:id="buttonGetAverageWeightedRates" mnemonicParsing="false" onAction="#buttonGetAverageWeightedRatesOnAction" text="Get average weighted rates" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

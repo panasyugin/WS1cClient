@@ -30,7 +30,10 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    private Auth authController;
+    private AuthResult authResult;
+
+    private AuthController authController;
+    private AverageRatesController averageRateController;
 
     @FXML
     public MenuItem buttonClose;
@@ -40,6 +43,9 @@ public class Controller implements Initializable {
 
     @FXML
     public MenuItem buttonGetMaxDebt;
+
+    @FXML
+    public MenuItem buttonGetAverageWeightedRates;
 
     @FXML
     private TableView<DataCreditsLoans> tableView;
@@ -92,10 +98,13 @@ public class Controller implements Initializable {
     @FXML
     void buttonGetDataForDashBoardOnAction(ActionEvent event) throws IOException, DatatypeConfigurationException {
 
-        AuthResult authResult = authAndGetProxy();
+        AuthResult authRes = authAndGetProxy();
 
-        GetDataForDashBoardPortType portType = authResult.portType;
-        LocalDate date = authResult.date;
+        GetDataForDashBoardPortType portType = authRes.portType;
+        LocalDate date = authRes.date;
+
+        if (portType == null)
+            return;
 
         // Выполняем вызов web-сервиса
         GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
@@ -111,10 +120,13 @@ public class Controller implements Initializable {
     @FXML
     void buttonGetMaxDebtOnAction(ActionEvent event) throws IOException, DatatypeConfigurationException {
 
-        AuthResult authResult = authAndGetProxy();
+        AuthResult authRes = authAndGetProxy();
 
-        GetDataForDashBoardPortType portType = authResult.portType;
-        LocalDate date = authResult.date;
+        GetDataForDashBoardPortType portType = authRes.portType;
+        LocalDate date = authRes.date;
+
+        if (portType == null)
+            return;
 
         // Выполняем вызов web-сервиса
         GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
@@ -127,11 +139,51 @@ public class Controller implements Initializable {
         tableView.setItems(observableList);
     }
 
-    void setAuthControler(Auth c){
+    void setAuthControler(AuthController c){
         authController = c;
     }
 
+    void setAverageRateController(AverageRatesController c){
+        averageRateController = c;
+    }
+
+    @FXML
+    void buttonGetAverageWeightedRatesOnAction(ActionEvent event) throws IOException, DatatypeConfigurationException {
+
+        AuthResult authRes = authAndGetProxy();
+
+        GetDataForDashBoardPortType portType = authRes.portType;
+        LocalDate date = authRes.date;
+
+        if (portType == null)
+            return;
+
+        // Выполняем вызов web-сервиса
+        GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
+        XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+
+        TableAverageWeightedRates ratesData = portType.getAverageWeightedRates(xmlDate);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ws1c/gui/views/averageRates.fxml"));
+
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle("Средневзвешенные ставки");
+        stage.setScene(scene);
+
+        AverageRatesController controller = loader.getController();
+        setAverageRateController(controller);
+
+        controller.setTableViewData(ratesData);
+
+        stage.showAndWait();
+    }
+
     AuthResult authAndGetProxy() throws IOException {
+
+        if (authResult != null)
+            return authResult;
 
         GetDataForDashBoardPortType portType = null;
 
@@ -146,7 +198,7 @@ public class Controller implements Initializable {
 
         stage.setScene(scene);
 
-        Auth authC = loader.getController();
+        AuthController authC = loader.getController();
 
         setAuthControler(authC);
 
@@ -183,10 +235,12 @@ public class Controller implements Initializable {
 
         portType = proxy.getGetDataForDashBoardSoap();
 
-        return new AuthResult(portType, date);
+        authResult = new AuthResult(portType, date);
+
+        return authResult;
     }
 
-    Auth getAuthController(){
+    AuthController getAuthController(){
         return authController;
     }
 

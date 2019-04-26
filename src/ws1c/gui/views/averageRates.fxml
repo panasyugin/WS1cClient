@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="373.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ws1c.gui.controler.AverageRatesController">
+   <children>
+      <MenuBar prefHeight="373.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="buttonClose" mnemonicParsing="false" onAction="#buttonCloseOnAction" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="tableView" layoutY="24.0" maxHeight="1.7976931348623157E308" prefHeight="349.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+        <columns>
+          <TableColumn id="companyID" fx:id="companyID" prefWidth="75.0" text="Company ID" />
+          <TableColumn id="companyName" fx:id="companyName" prefWidth="120.0" text="Company Name" />
+            <TableColumn id="currency" fx:id="currency" prefWidth="120.0" text="Сurrency" />
+            <TableColumn id="averageWeightedRate" fx:id="averageWeightedRate" prefWidth="120.0" text="Average Weighted Rate" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -47,7 +47,7 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link GetMaxDebt }
-     * 
+     *
      */
     public GetMaxDebt createGetMaxDebt() {
         return new GetMaxDebt();
@@ -77,4 +77,19 @@ public class ObjectFactory {
         return new DataCreditsLoans();
     }
 
+    /**
+     * Create an instance of {@link GetAverageWeightedRates }
+     *
+     */
+    public GetAverageWeightedRates createGetAverageWeightedRates() {
+        return new GetAverageWeightedRates();
+    }
+
+    /**
+     * Create an instance of {@link GetLoanDataResponse }
+     *
+     */
+    public GetAverageWeightedRatesResponse createGetAverageWeightedRatesResponse() {
+        return new GetAverageWeightedRatesResponse();
+    }
 }

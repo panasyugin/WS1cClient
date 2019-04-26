@@ -13,7 +13,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class Auth implements Initializable {
+public class AuthController implements Initializable {
 
     private boolean isTerminated;
 

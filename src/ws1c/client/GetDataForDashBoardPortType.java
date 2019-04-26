@@ -52,4 +52,18 @@ public interface GetDataForDashBoardPortType {
         @WebParam(name = "forecastingPeriod", targetNamespace = "http://interrao.ru/UH/DashBoard")
         XMLGregorianCalendar forecastingPeriod);
 
+    /**
+     *
+     * @param forecastingPeriod
+     * @return
+     *     returns ws1c.client.TableAverageWeightedRates
+     */
+    @WebMethod(operationName = "GetAverageWeightedRates", action = "http://interrao.ru/UH/DashBoard#GetDataForDashBoard:GetAverageWeightedRates")
+    @WebResult(targetNamespace = "http://interrao.ru/UH/DashBoard")
+    @RequestWrapper(localName = "GetAverageWeightedRates", targetNamespace = "http://interrao.ru/UH/DashBoard", className = "ws1c.client.GetAverageWeightedRates")
+    @ResponseWrapper(localName = "GetAverageWeightedRatesResponse", targetNamespace = "http://interrao.ru/UH/DashBoard", className = "ws1c.client.GetAverageWeightedRatesResponse")
+    public TableAverageWeightedRates getAverageWeightedRates(
+            @WebParam(name = "forecastingPeriod", targetNamespace = "http://interrao.ru/UH/DashBoard")
+                    XMLGregorianCalendar forecastingPeriod);
+
 }

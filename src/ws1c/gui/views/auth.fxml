@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="165.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ws1c.gui.controler.Auth">
+<AnchorPane prefHeight="165.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ws1c.gui.controler.AuthController">
    <children>
       <GridPane layoutX="6.0" prefHeight="158.0" prefWidth="299.0">
         <columnConstraints>
