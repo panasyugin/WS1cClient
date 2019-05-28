@@ -75,6 +75,8 @@ public class Controller implements Initializable {
     @FXML
     private TableColumn<DataCreditsLoans, Double> limit;
     @FXML
+    private TableColumn<DataCreditsLoans, Double> limitInCurrency;
+    @FXML
     private TableColumn<DataCreditsLoans, XMLGregorianCalendar> balanceDate;
     @FXML
     private TableColumn<DataCreditsLoans, Double> remainingDebt;
@@ -261,6 +263,20 @@ public class Controller implements Initializable {
         balanceDate.setCellValueFactory(new PropertyValueFactory<>("balanceDate"));
 
         NumberFormat currencyFormat = NumberFormat.getInstance();
+
+        limitInCurrency.setCellValueFactory(new PropertyValueFactory<>("limitInCurrency"));
+        limitInCurrency.setCellFactory(tc -> new TableCell<DataCreditsLoans, Double>() {
+
+            @Override
+            protected void updateItem(Double price, boolean empty) {
+                super.updateItem(price, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(currencyFormat.format(price));
+                }
+            }
+        });
 
         limit.setCellValueFactory(new PropertyValueFactory<>("limit"));
         limit.setCellFactory(tc -> new TableCell<DataCreditsLoans, Double>() {

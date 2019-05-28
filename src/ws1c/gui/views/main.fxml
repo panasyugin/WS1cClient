@@ -40,6 +40,7 @@
             <TableColumn id="loanForm" fx:id="loanForm" prefWidth="120.0" text="Loan Form" />
             <TableColumn id="currency" fx:id="currency" prefWidth="120.0" text="Сurrency" />
             <TableColumn id="limit" fx:id="limit" prefWidth="120.0" text="Limit" />
+            <TableColumn id="limitInCurrency" fx:id="limitInCurrency" prefWidth="120.0" text="Limit in currency" />
             <TableColumn id="balanceDate" fx:id="balanceDate" prefWidth="120.0" text="Balance Date" />
             <TableColumn id="remainingDebt" fx:id="remainingDebt" prefWidth="120.0" text="Remaining Debt" />
             <TableColumn id="remainingDebtInCurrency" fx:id="remainingDebtInCurrency" prefWidth="120.0" text="Remaining Debt in Currency" />

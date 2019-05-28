@@ -31,6 +31,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="loanForm" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="currency" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="limit" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="limitInCurrency" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="balanceDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="remainingDebt" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="remainingDebtInCurrency" type="{http://www.w3.org/2001/XMLSchema}double"/>
@@ -56,6 +57,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "loanForm",
     "currency",
     "limit",
+    "limitInCurrency",
     "balanceDate",
     "remainingDebt",
     "remainingDebtInCurrency"
@@ -86,6 +88,7 @@ public class DataCreditsLoans {
     @XmlElement(required = true)
     protected String currency;
     protected double limit;
+    protected double limitInCurrency;
     @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar balanceDate;
@@ -370,6 +373,22 @@ public class DataCreditsLoans {
      */
     public void setLimit(double value) {
         this.limit = value;
+    }
+
+    /**
+     * Gets the value of the limitInCurrency property.
+     *
+     */
+    public double getLimitInCurrency() {
+        return limitInCurrency;
+    }
+
+    /**
+     * Sets the value of the limitInCurrency property.
+     *
+     */
+    public void setLimitInCurrency(double value) {
+        this.limitInCurrency = value;
     }
 
     /**
